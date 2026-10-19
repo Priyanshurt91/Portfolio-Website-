@@ -832,94 +832,132 @@
       box-shadow: var(--shadow-ink-sm);
     }
 
-    /* RIGHT HERO: The Physical Hanging Lanyard Pass */
+    /* ========================================================
+       HERO RIGHT: Physical Hanging Builder Pass (Lanyard ID Card)
+       ======================================================== */
     .id-badge-container,
     .badge-card,
-    .badge-wrapper,
-    .lanyard-card {
+    .badge-wrapper {
       position: relative;
       width: 100%;
-      max-width: min(340px, 90vw);
-      margin: 2rem auto 0;
+      max-width: 380px;
+      margin: 1.5rem auto 0;
       box-sizing: border-box;
+      perspective: 1200px;
     }
 
-    .badge-wrapper {
-      perspective: 1000px;
-    }
-
-    /* Lanyard Ribbon Strap */
+    /* Woven Lanyard Ribbon */
     .lanyard-strap {
-      width: 48px;
-      height: 48px;
+      width: 38px;
+      height: 46px;
       background: var(--g-blue);
-      border-inline: 2px solid var(--border-color);
-      border-top: 2px solid var(--border-color);
-      margin: 0 auto;
+      border-inline: 2.5px solid var(--border-color);
+      border-top: 2.5px solid var(--border-color);
+      margin: 0 auto -6px; /* anchors seamlessly to top of card */
       position: relative;
-      z-index: 1;
-      display: flex;
-      justify-content: center;
-      background-image: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0, 0, 0, 0.12) 4px, rgba(0, 0, 0, 0.12) 8px);
+      z-index: 6;
+      background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 4px,
+        rgba(0, 0, 0, 0.18) 4px,
+        rgba(0, 0, 0, 0.18) 8px
+      );
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
 
+    /* Metallic Swivel Lobster Clasp & Hardware Ring */
     .lanyard-clip {
       position: absolute;
-      bottom: -6px;
-      width: 20px;
-      height: 12px;
-      background: #cccccc;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 22px;
+      height: 14px;
+      background: linear-gradient(180deg, #f1f5f9 0%, #cbd5e1 50%, #94a3b8 100%);
       border: 2px solid var(--border-color);
       border-radius: 3px;
+      z-index: 7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     }
 
-    /* Main Lanyard Pass Card */
+    .lanyard-clip::before {
+      content: "";
+      width: 10px;
+      height: 3px;
+      background: #64748b;
+      border-radius: 2px;
+    }
+
+    .lanyard-clasp-ring {
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 13px;
+      height: 12px;
+      border: 2.5px solid #334155;
+      border-top: none;
+      border-radius: 0 0 7px 7px;
+      background: transparent;
+      z-index: 8;
+    }
+
+    /* Main Physical Pass Card */
     .lanyard-card {
       background: var(--bg-white);
-      border: 2px solid var(--border-color);
+      border: 2.5px solid var(--border-color);
       box-shadow: var(--shadow-ink);
       position: relative;
       z-index: 2;
+      border-radius: 10px;
+      overflow: hidden;
       transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
       box-sizing: border-box;
       width: 100%;
     }
 
     .lanyard-card:hover {
-      transform: translateY(-6px) rotate(0.8deg);
+      transform: translateY(-6px) rotate(0.6deg);
       box-shadow: 10px 10px var(--border-color);
     }
 
-    /* Punched hole for clip */
+    /* Oval Slot Punch Hole (hooks through with the metal clasp) */
     .lanyard-hole {
       position: absolute;
-      top: 10px;
+      top: 7px;
       left: 50%;
       transform: translateX(-50%);
-      width: 52px;
-      height: 14px;
-      background: var(--bg-cream);
-      border: 2px solid var(--border-color);
+      width: 40px;
+      height: 10px;
+      background: #0f172a;
+      border: 1.5px solid rgba(255, 255, 255, 0.45);
       border-radius: 999px;
       z-index: 5;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.7);
     }
 
+    /* Card Top Bar */
     .lanyard-topbar {
       background: var(--g-blue);
       color: #ffffff;
-      border-bottom: 2px solid var(--border-color);
-      padding: 26px 18px 10px;
+      border-bottom: 2.5px solid var(--border-color);
+      padding: 24px 16px 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-sizing: border-box;
+      position: relative;
     }
 
     .lanyard-topbar-title {
       font-family: var(--font-ticket);
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       display: flex;
       align-items: center;
@@ -929,132 +967,227 @@
     .lanyard-id {
       font-family: var(--font-ticket);
       font-size: 0.72rem;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 0.12em;
-      opacity: 0.9;
+      background: rgba(0, 0, 0, 0.22);
+      padding: 2px 7px;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
+    /* Card Interior Body */
     .lanyard-body {
-      padding: 20px 18px;
+      padding: 22px 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-sizing: border-box;
+      background: var(--bg-white);
+    }
+
+    /* Profile Row: Avatar + Identity Info */
+    .lanyard-profile-row {
       display: flex;
       gap: 16px;
-      align-items: flex-start;
+      align-items: center;
+      width: 100%;
       box-sizing: border-box;
     }
 
-    .lanyard-avatar-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-
     .lanyard-avatar-frame {
-      width: 90px;
-      height: 90px;
-      border: 2px solid var(--border-color);
+      width: 88px;
+      height: 88px;
+      border: 2.5px solid var(--border-color);
       border-radius: 50%;
       overflow: hidden;
-      background: var(--bg-cream);
+      background: #fef7e0;
       box-shadow: 3px 3px var(--border-color);
+      flex-shrink: 0;
+      position: relative;
     }
 
     .lanyard-avatar-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
+    }
+
+    .lanyard-avatar-status {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 14px;
+      height: 14px;
+      background: var(--g-green);
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--g-green);
+    }
+
+    .lanyard-profile-details {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .lanyard-meta-label {
+      font-family: var(--font-ticket);
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--g-blue);
+    }
+
+    .lanyard-name {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      margin: 1px 0;
+      color: var(--ink);
+    }
+
+    .lanyard-track {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+      line-height: 1.35;
+      margin-bottom: 4px;
     }
 
     .lanyard-role-tag {
       font-family: var(--font-ticket);
-      font-size: 0.65rem;
+      font-size: 0.68rem;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       background: var(--g-yellow);
       color: #141414;
       border: 2px solid var(--border-color);
-      padding: 4px 8px;
+      padding: 3px 8px;
       box-shadow: 2px 2px var(--border-color);
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
+      width: fit-content;
       white-space: nowrap;
     }
 
-    .lanyard-info-col {
-      flex: 1;
-      border-left: 2px dashed rgba(20, 20, 20, 0.25);
-      padding-left: 16px;
-      min-width: 0;
-      overflow: hidden;
+    /* Smart Chip & Authenticity Stripe */
+    .lanyard-chip-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 4px;
       box-sizing: border-box;
     }
 
-    .lanyard-meta-label {
+    .lanyard-chip {
+      width: 32px;
+      height: 22px;
+      background: linear-gradient(135deg, #fef08a 0%, #eab308 50%, #ca8a04 100%);
+      border: 1.5px solid #854d0e;
+      border-radius: 3px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .chip-line {
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: #854d0e;
+    }
+
+    .chip-line:nth-child(1) { top: 6px; }
+    .chip-line:nth-child(2) { bottom: 6px; }
+
+    .chip-core {
+      width: 12px;
+      height: 10px;
+      border: 1px solid #854d0e;
+      border-radius: 2px;
+      background: rgba(254, 240, 138, 0.6);
+    }
+
+    .lanyard-chip-label {
       font-family: var(--font-ticket);
-      font-size: 0.66rem;
+      font-size: 0.62rem;
       font-weight: 800;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
       color: var(--ink-faint);
     }
 
-    .lanyard-name {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      font-weight: 800;
-      line-height: 1.15;
-      margin-top: 2px;
-      letter-spacing: -0.03em;
-      word-break: break-word;
-    }
-
-    .lanyard-track {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--ink-muted);
-      margin-top: 4px;
-      line-height: 1.35;
-      word-break: break-word;
-    }
-
+    /* Full-Width Credentials Meta Grid */
     .lanyard-meta-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 12px;
-      padding-top: 10px;
-      border-top: 1px dashed rgba(20, 20, 20, 0.2);
+      gap: 12px 16px;
+      padding-top: 14px;
+      border-top: 2px dashed rgba(20, 20, 20, 0.2);
     }
 
     .lanyard-meta-item p:first-child {
       font-family: var(--font-ticket);
-      font-size: 0.64rem;
-      font-weight: 700;
+      font-size: 0.66rem;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.16em;
       color: var(--ink-faint);
     }
 
     .lanyard-meta-item p:last-child {
       font-family: var(--font-ticket);
-      font-size: 0.8rem;
+      font-size: 0.88rem;
       font-weight: 800;
-      margin-top: 2px;
-      overflow-wrap: break-word;
-      word-break: break-word;
+      margin-top: 3px;
+      color: var(--ink);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
+    .lanyard-meta-item .status-active {
+      color: var(--g-green);
+      font-weight: 800;
+    }
+
+    /* Ticket Stub Footer with Barcode & Red Verification Stamp */
     .lanyard-footer {
-      border-top: 2px dashed rgba(20, 20, 20, 0.25);
+      border-top: 2.5px dashed rgba(20, 20, 20, 0.25);
       padding: 14px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       background: var(--bg-card);
       box-sizing: border-box;
+    }
+
+    .lanyard-barcode-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .lanyard-barcode-label {
+      font-family: var(--font-ticket);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      white-space: nowrap;
     }
 
     .lanyard-stamp {
@@ -1065,9 +1198,11 @@
       font-weight: 900;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 4px 8px;
+      padding: 5px 9px;
       transform: rotate(-4deg);
-      border-radius: 2px;
+      border-radius: 3px;
+      box-shadow: 1px 1px 0 rgba(234, 67, 53, 0.3);
+      user-select: none;
     }
 
     /* ========================================================
@@ -2393,27 +2528,12 @@
         padding: 6px 12px;
       }
 
-      /* Lanyard card – collapse to column on tablet */
-      .lanyard-body {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .lanyard-info-col {
-        border-left: none;
-        border-top: 2px dashed rgba(20, 20, 20, 0.2);
-        padding-left: 0;
-        padding-top: 16px;
-        width: 100%;
-      }
-
-      .lanyard-meta-grid {
-        text-align: left;
-      }
-
+      /* Lanyard card */
+      .id-badge-container,
+      .badge-card,
       .badge-wrapper {
-        max-width: 100%;
+        max-width: 380px;
+        margin: 2rem auto 0;
       }
 
       /* Engineering Tracks & Featured Projects: 1fr below 768px */
@@ -2688,33 +2808,50 @@
       }
 
       /* Lanyard card */
+      .id-badge-container,
+      .badge-card,
+      .badge-wrapper {
+        max-width: min(340px, 92vw);
+        margin: 2rem auto 0;
+      }
+
       .lanyard-card {
-        margin: 0;
+        margin: 0 auto;
+      }
+
+      .lanyard-profile-row {
+        gap: 12px;
       }
 
       .lanyard-avatar-frame {
-        width: 88px;
-        height: 88px;
+        width: 76px;
+        height: 76px;
       }
 
       .lanyard-name {
-        font-size: 1.45rem;
+        font-size: 1.25rem;
       }
 
       .lanyard-track {
-        font-size: 0.92rem;
+        font-size: 0.76rem;
+      }
+
+      .lanyard-role-tag {
+        font-size: 0.62rem;
+        padding: 2px 7px;
+        white-space: nowrap;
       }
 
       .lanyard-topbar {
-        padding: 24px 16px 10px;
+        padding: 24px 14px 10px;
       }
 
       .lanyard-topbar-title {
-        font-size: 0.82rem;
+        font-size: 0.78rem;
       }
 
       .lanyard-id {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
       }
 
       /* Experience */
@@ -3583,65 +3720,86 @@
           </div>
         </div>
 
-        <!-- Right: Physical Hanging Lanyard Pass Card (DevFest Signature) -->
+        <!-- Right: Physical Hanging Lanyard Pass Card -->
         <div class="badge-wrapper reveal" style="transition-delay: 150ms;">
-          <!-- Lanyard Ribbon Strap -->
+          <!-- Lanyard Ribbon Strap & Metallic Clip -->
           <div class="lanyard-strap" aria-hidden="true">
-            <div class="lanyard-clip"></div>
+            <div class="lanyard-clip">
+              <div class="lanyard-clasp-ring"></div>
+            </div>
           </div>
 
-          <!-- Lanyard Card -->
+          <!-- Physical Lanyard ID Card -->
           <div class="lanyard-card">
+            <!-- Punched Badge Slot -->
             <div class="lanyard-hole" aria-hidden="true"></div>
 
+            <!-- Card Header Bar -->
             <div class="lanyard-topbar">
-              <span class="lanyard-topbar-title">
+              <div class="lanyard-topbar-title">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                 </svg>
-                BUILDER
-              </span>
-              <span class="lanyard-id">NGP·2026·PR01</span>
+                <span>BUILDER PASS</span>
+              </div>
+              <div class="lanyard-id">PR01 · 2026</div>
             </div>
 
+            <!-- Card Interior Body -->
             <div class="lanyard-body">
-              <div class="lanyard-avatar-col">
+              <!-- Top Profile Row: Avatar + Credentials -->
+              <div class="lanyard-profile-row">
                 <div class="lanyard-avatar-frame">
-                  <img src="hamster.png" alt="Hamster Avatar" />
+                  <img src="hamster.png" alt="Priyanshu Raut - Hamster Avatar" />
+                  <span class="lanyard-avatar-status" title="Active"></span>
                 </div>
-                <div class="lanyard-role-tag">
-                  <span>★</span> AI/ML ENGINEER
+                <div class="lanyard-profile-details">
+                  <span class="lanyard-meta-label">OFFICIAL CREDENTIAL</span>
+                  <h3 class="lanyard-name">Priyanshu Raut</h3>
+                  <p class="lanyard-track">Deep Learning &amp; Computer Vision</p>
+                  <div class="lanyard-role-tag">
+                    <span>★</span> AI/ML ENGINEER
+                  </div>
                 </div>
               </div>
 
-              <div class="lanyard-info-col">
-                <span class="lanyard-meta-label">KEY SPEAKER &amp; BUILDER</span>
-                <h3 class="lanyard-name">Priyanshu Raut</h3>
-                <p class="lanyard-track">Deep Learning &amp; Computer Vision</p>
+              <!-- Security EMV Smart Chip Bar -->
+              <div class="lanyard-chip-row" aria-hidden="true">
+                <div class="lanyard-chip">
+                  <div class="chip-line"></div>
+                  <div class="chip-line"></div>
+                  <div class="chip-core"></div>
+                </div>
+                <span class="lanyard-chip-label">SECURE IDENTIFIER // 2026</span>
+              </div>
 
-                <div class="lanyard-meta-grid">
-                  <div class="lanyard-meta-item">
-                    <p>Focus</p>
-                    <p>Transformers</p>
-                  </div>
-                  <div class="lanyard-meta-item">
-                    <p>Status</p>
-                    <p style="color:var(--g-green);">● Active</p>
-                  </div>
-                  <div class="lanyard-meta-item">
-                    <p>Location</p>
-                    <p>Nagpur, IN</p>
-                  </div>
-                  <div class="lanyard-meta-item">
-                    <p>Batch</p>
-                    <p>Class of '26</p>
-                  </div>
+              <!-- Full-Width Credentials Meta Grid -->
+              <div class="lanyard-meta-grid">
+                <div class="lanyard-meta-item">
+                  <p>Focus</p>
+                  <p>Transformers &amp; CV</p>
+                </div>
+                <div class="lanyard-meta-item">
+                  <p>Status</p>
+                  <p class="status-active">● Active</p>
+                </div>
+                <div class="lanyard-meta-item">
+                  <p>Location</p>
+                  <p>Nagpur, India</p>
+                </div>
+                <div class="lanyard-meta-item">
+                  <p>Batch</p>
+                  <p>Class of '26</p>
                 </div>
               </div>
             </div>
 
+            <!-- Ticket Tear-off Footer with Barcode & Red Verification Stamp -->
             <div class="lanyard-footer">
-              <div class="pass-barcode" aria-label="Pass Barcode"></div>
+              <div class="lanyard-barcode-block">
+                <div class="pass-barcode" aria-label="Pass Barcode"></div>
+                <span class="lanyard-barcode-label">* NGP-2026-PR01-PASS *</span>
+              </div>
               <div class="lanyard-stamp">VERIFIED 2026</div>
             </div>
           </div>

@@ -724,6 +724,10 @@
       font-weight: 700;
       box-shadow: 2px 2px var(--border-color);
       margin-bottom: 20px;
+      max-width: 100%;
+      box-sizing: border-box;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .hero-date-dot {
@@ -2536,17 +2540,11 @@
         padding: 13px 22px;
       }
 
-      /* Decorative shapes – hide on small screens */
-      .shape-circle {
-        width: 70px;
-        height: 70px;
-        left: -20px;
-        top: 30px;
-      }
-
-      .shape-square {
-        width: 48px;
-        height: 48px;
+      /* Decorative shapes – hide on small screens so they never cover text or controls */
+      .shape-circle,
+      .shape-square,
+      .shape-star {
+        display: none;
       }
 
       /* Stats */

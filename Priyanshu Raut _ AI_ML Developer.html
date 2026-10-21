@@ -1966,10 +1966,18 @@
     /* ========================================================
        EDUCATION & RESEARCH / PUBLICATIONS
        ======================================================== */
+    #education-research {
+      overflow-x: hidden;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
     .edu-pub-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 32px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .paper-card {
@@ -1977,6 +1985,17 @@
       border: 2px solid var(--border-color);
       box-shadow: var(--shadow-ink);
       padding: 34px;
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .paper-badge,
+    .paper-card .sec-kicker {
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-all;
+      max-width: 100%;
     }
 
     .paper-title {
@@ -1984,6 +2003,8 @@
       font-size: 1.6rem;
       font-weight: 900;
       line-height: 1.25;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .paper-meta {
@@ -1991,6 +2012,8 @@
       color: var(--ink-muted);
       margin-top: 14px;
       line-height: 1.65;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .paper-doi {
@@ -1999,6 +2022,54 @@
       font-weight: 700;
       color: var(--g-blue);
       margin-top: 12px;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-all;
+      max-width: 100%;
+    }
+
+    .paper-subcards {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px dashed var(--ink-faint);
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 12px;
+      box-sizing: border-box;
+    }
+
+    @media (min-width: 640px) {
+      .paper-subcards {
+        flex-direction: row;
+        gap: 16px;
+      }
+
+      .paper-subcard {
+        flex: 1 1 0%;
+      }
+    }
+
+    .paper-subcard {
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .paper-subcard h4 {
+      font-family: var(--font-ticket);
+      font-size: 0.95rem;
+      font-weight: 900;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .paper-subcard p {
+      font-size: 0.92rem;
+      color: var(--ink-muted);
+      margin-top: 4px;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .edu-box {
@@ -2009,6 +2080,19 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .edu-degree-title,
+    .degree {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 900;
+      margin-top: 10px;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .cgpa-stamp {
@@ -2019,6 +2103,8 @@
       text-align: center;
       margin-top: 22px;
       align-self: flex-start;
+      box-sizing: border-box;
+      max-width: 100%;
     }
 
     .cgpa-num {
@@ -2035,6 +2121,21 @@
       letter-spacing: 0.16em;
       text-transform: uppercase;
       margin-top: 6px;
+    }
+
+    /* Helper utilities for responsive flow and text wrapping */
+    .w-full { width: 100% !important; }
+    .max-w-lg { max-width: 32rem !important; }
+    .max-w-full { max-width: 100% !important; }
+    .min-w-0 { min-width: 0 !important; }
+    .mx-auto { margin-left: auto !important; margin-right: auto !important; }
+    .items-center { align-items: center !important; }
+    .flex-col { flex-direction: column !important; }
+    .gap-3 { gap: 12px !important; }
+    .break-all { word-break: break-all !important; }
+    .break-words { overflow-wrap: anywhere !important; word-break: break-word !important; }
+    @media (min-width: 640px) {
+      .sm\:flex-row { flex-direction: row !important; }
     }
 
     /* ========================================================
@@ -2666,6 +2767,93 @@
       .terminal-body {
         font-size: 0.88rem;
       }
+
+      /* Education & Research Layout (< 768px) */
+      #education-research {
+        overflow-x: hidden;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .edu-pub-grid {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        align-items: center;
+        gap: 24px;
+        box-sizing: border-box;
+      }
+
+      .paper-card,
+      .edu-box {
+        width: 100% !important;
+        max-width: min(100%, 32rem) !important;
+        min-width: 0 !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding: 24px 18px;
+        box-sizing: border-box;
+        box-shadow: var(--shadow-ink-sm);
+      }
+
+      .paper-badge,
+      .paper-card .sec-kicker {
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: break-all;
+        letter-spacing: 0.12em;
+        font-size: 0.85rem;
+        max-width: 100%;
+      }
+
+      .paper-doi {
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: break-all;
+        font-size: 0.84rem;
+        max-width: 100%;
+      }
+
+      .paper-title {
+        font-size: clamp(1.25rem, 5vw, 1.5rem);
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
+      .paper-meta {
+        font-size: 0.95rem;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        line-height: 1.55;
+      }
+
+      .edu-degree-title,
+      .degree {
+        font-size: clamp(1.25rem, 5vw, 1.5rem);
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
+      .paper-subcards {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+        box-sizing: border-box;
+      }
+
+      .paper-subcard {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+      }
+
+      .cgpa-stamp {
+        box-sizing: border-box;
+        max-width: 100%;
+        padding: 16px 20px;
+      }
     }
 
     /* ── 640px: Large phone landscape ── */
@@ -2903,14 +3091,21 @@
       /* Research / Education */
       .paper-title {
         font-size: 1.35rem;
+        overflow-wrap: anywhere;
+        word-break: break-word;
       }
 
       .paper-meta {
         font-size: 0.92rem;
+        overflow-wrap: anywhere;
+        word-break: break-word;
       }
 
-      .degree {
+      .degree,
+      .edu-degree-title {
         font-size: 1.4rem;
+        overflow-wrap: anywhere;
+        word-break: break-word;
       }
 
       .cgpa-num {
@@ -3432,7 +3627,7 @@
 
       /* Education / Research */
       .paper-card {
-        padding: 20px 14px;
+        padding: 18px 12px;
       }
 
       .paper-title {
@@ -3444,11 +3639,16 @@
       }
 
       .edu-box {
-        padding: 20px 14px;
+        padding: 18px 12px;
+      }
+
+      .degree,
+      .edu-degree-title {
+        font-size: 1.18rem;
       }
 
       .cgpa-stamp {
-        padding: 14px 18px;
+        padding: 12px 14px;
       }
 
       .cgpa-num {
@@ -4525,23 +4725,23 @@
           </p>
         </div>
 
-        <div class="edu-pub-grid">
+        <div class="edu-pub-grid w-full items-center">
           <!-- Research Publication -->
-          <article class="paper-card reveal">
-            <span class="sec-kicker purple" style="font-size:0.92rem;">PEER-REVIEWED JOURNAL ARTICLE</span>
-            <h3 class="paper-title" style="margin-top:10px;">
+          <article class="paper-card reveal w-full max-w-lg min-w-0 mx-auto">
+            <span class="sec-kicker purple paper-badge break-all" style="font-size:0.92rem; white-space:normal; overflow-wrap:anywhere;">PEER-REVIEWED JOURNAL ARTICLE</span>
+            <h3 class="paper-title break-words" style="margin-top:10px; overflow-wrap:anywhere;">
               Helpdesk Chatbot: Technology and Human-Centred Design
             </h3>
-            <p class="paper-meta">
+            <p class="paper-meta break-words" style="overflow-wrap:anywhere;">
               Priti Golar, Shubhangi Chaware, <strong>Priyanshu Raut</strong>, Parikshit Thakre, Sujal Kamble, Yash
               Lende, Kajal Khangan. (2025). <em>International Journal of Recent Advances in Engineering and
                 Technology</em> (IJRAET), 14(3s): 48–54.
             </p>
-            <p class="paper-doi">
+            <p class="paper-doi break-all" style="white-space:normal; overflow-wrap:anywhere;">
               DOI: 10.65521/intjournalrecadvengtech.v14i3s.1657
             </p>
             <div style="margin-top:22px;">
-              <a class="btn-ticket press-sm" style="background:var(--g-blue); color:#fff;"
+              <a class="btn-ticket press-sm" style="background:var(--g-blue); color:#fff; max-width:100%; white-space:normal;"
                 href="https://doi.org/10.65521/intjournalrecadvengtech.v14i3s.1657" target="_blank"
                 rel="noopener noreferrer">
                 <span>Read Official Paper</span>
@@ -4550,16 +4750,14 @@
             </div>
 
             <!-- Leadership Badges -->
-            <div
-              style="margin-top:28px; padding-top:20px; border-top:1px dashed rgba(20,20,20,0.2); display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px;">
-              <div>
+            <div class="paper-subcards flex-col sm:flex-row w-full gap-3">
+              <div class="paper-subcard min-w-0 w-full">
                 <h4 style="font-family:var(--font-ticket); font-size:0.95rem; font-weight:900;">CSI Student Mentor</h4>
                 <p style="font-size:0.92rem; color:var(--ink-muted); margin-top:4px;">Guiding 100+ students in AI/ML,
                   Data Structures, and hackathons (2025–Present).</p>
               </div>
-              <div>
-                <h4 style="font-family:var(--font-ticket); font-size:0.95rem; font-weight:900;">Publicity Head · CSI
-                </h4>
+              <div class="paper-subcard min-w-0 w-full">
+                <h4 style="font-family:var(--font-ticket); font-size:0.95rem; font-weight:900;">Publicity Head · CSI</h4>
                 <p style="font-size:0.92rem; color:var(--ink-muted); margin-top:4px;">Led outreach, marketing, and
                   technical events promotion (2023–2024).</p>
               </div>
@@ -4567,19 +4765,19 @@
           </article>
 
           <!-- Education Card -->
-          <div class="edu-box reveal" style="transition-delay: 100ms;">
+          <div class="edu-box reveal w-full max-w-lg min-w-0 mx-auto" style="transition-delay: 100ms;">
             <div>
-              <span class="sec-kicker blue" style="font-size:0.92rem;">UNDERGRADUATE DEGREE</span>
-              <h3 style="font-family:var(--font-display); font-size:1.65rem; font-weight:900; margin-top:10px;">
+              <span class="sec-kicker blue paper-badge break-all" style="font-size:0.92rem; white-space:normal; overflow-wrap:anywhere;">UNDERGRADUATE DEGREE</span>
+              <h3 class="edu-degree-title degree break-words" style="font-family:var(--font-display); font-size:1.65rem; font-weight:900; margin-top:10px; overflow-wrap:anywhere;">
                 Bachelor of Technology in Information Technology
               </h3>
-              <p style="font-size:1.1rem; font-weight:700; color:var(--g-blue); margin-top:6px;">
+              <p style="font-size:1.1rem; font-weight:700; color:var(--g-blue); margin-top:6px; overflow-wrap:anywhere;">
                 St. Vincent Pallotti College of Engineering &amp; Technology
               </p>
-              <p class="font-ticket" style="font-size:0.92rem; color:var(--ink-faint); margin-top:6px;">
+              <p class="font-ticket" style="font-size:0.92rem; color:var(--ink-faint); margin-top:6px; overflow-wrap:anywhere;">
                 Nagpur, Maharashtra, India · Nov 2022 – May 2026
               </p>
-              <p style="font-size:1.05rem; color:var(--ink-muted); margin-top:14px; line-height:1.65;">
+              <p style="font-size:1.05rem; color:var(--ink-muted); margin-top:14px; line-height:1.65; overflow-wrap:anywhere;">
                 Focused on machine learning, distributed systems, algorithms, compiler design, and software
                 architecture.
               </p>

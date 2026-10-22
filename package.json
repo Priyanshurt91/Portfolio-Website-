@@ -1,0 +1,15 @@
+{
+  "name": "priyanshu-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio of Priyanshu Raut — AI/ML Developer & Software Engineer (DevFest Edition) with ToTo AI Gemini Assistant",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@google/genai": "^2.30.0"
+  }
+}

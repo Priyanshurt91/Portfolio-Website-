@@ -37,6 +37,9 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     rel="stylesheet" />
 
+  <!-- ToTo AI Portfolio Assistant Styles (DevFest Edition) -->
+  <link rel="stylesheet" href="chat-assistant.css" />
+
   <!-- Structured Data Schema.org -->
   <script type="application/ld+json">
   {
@@ -5289,8 +5292,15 @@
           toast.classList.remove("show");
         }, 3400);
       }
+
+      // Expose UI audio and toast utilities for ToTo AI widget
+      window.playClickSound = playClickSound;
+      window.showToast = showToast;
     })();
   </script>
+
+  <!-- ToTo AI Chat Assistant (DevFest Edition) -->
+  <script src="chat-assistant.js" defer></script>
 </body>
 
 </html>
